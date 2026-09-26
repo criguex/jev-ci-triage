@@ -64,7 +64,7 @@ Test-data is never decided by a rule. Telling "the fixture changed" apart from "
 
 ## Honest limits
 
-- **Jev can pick a wrong option that is still valid.** It always answers with one of the options it was given. In this demo it leaned *flaky* (0.69 to 0.84 confidence) for a new test written for a feature the build doesn't have. That's a plausible guess and it's wrong. The threshold is what kept it away from a verdict.
+- **Jev can pick a wrong option that is still valid.** It always answers with one of the options it was given. In this demo it leaned *flaky* (0.69 to 0.84 confidence) for a new test written for a feature the build doesn't have. That's a plausible guess and it's wrong. In the recorded run the threshold kept it away from a verdict, but some calls came back above the threshold.
 - **Confidence is self-reported and only used for routing.** It decides whether an answer is shown as a verdict or sent to a person. It isn't a measured accuracy. For the same input it moved between calls (see the measurements), so a case right at the threshold can land on either side on different days.
 - **Rules need history.** With fewer than `minHistory` runs (default 5) the rules step back and the case goes to Jev or a person. New tests will show up as *unknown* more often, and that's intended.
 - **The demo is small.** 6 seeded failures isn't a benchmark. The numbers below show that the pipeline works end to end. They don't measure accuracy on your suite, and the threshold (0.75) is a starting point to tune on your data.
@@ -89,7 +89,25 @@ That's 5 correct, 1 correctly handed to a person that could have been decided, a
 
 **Jev calls** (recorded run and `scripts/measure.ts`; the raw data is in `demo/measurements/jev-repeatability.json`):
 
-MEASUREMENTS_PLACEHOLDER
+Measured 2026-09-26 from Medellín through Vercel AI Gateway (`jev-latest`), with every failure sent to Jev, including the ones rules already decide:
+
+| Failing test | Rule verdict | Jev choice across successful calls | Confidence (min to max) | Median latency |
+| --- | --- | --- | --- | --- |
+| counter reflects a completed item right away | flaky | flaky 4/4 | 1.00 | 529 ms |
+| backup service answers its health check | environment | environment 3/3 | 0.99 | 463 ms |
+| Completed filter shows only completed todos | regression | regression 1/1 | 0.97 | 612 ms |
+| seeded shopping list renders in order | none | test-data 2/2 | 1.00 | 462 ms |
+| marks everything complete through its accessible label | none | regression 5/5 | 0.62 to 0.91 | 471 ms (p90 1342 ms) |
+| renaming a todo keeps its position | none | flaky 2/2 | 0.71 to 0.78 | 619 ms |
+
+What this shows:
+
+- **Same input, different confidence.** Counting the recorded run as well, the accessibility regression came back at 0.61, 0.62 and 0.91. The "missing feature" test came back at 0.69, 0.71, 0.78 and 0.84. The threshold is 0.75, so on some calls the second one would have been labelled **flaky, which is wrong**. The chosen class didn't change between calls, but the confidence moved enough to change the routing. Treat any case near the threshold as unstable. Calibrating on your own data is part of the setup (see Service).
+- **On the clear cases Jev agreed with the rules** every time. That's 10 of 10 calls, a small sample.
+- **Cost and size:** 771 to 901 input tokens per failure, and the gateway reported USD 0.000032 to 0.000038 per call.
+- **Availability:** that afternoon the gateway returned HTTP 429 ("upstream provider is currently experiencing high demand") on most requests. Only **17 of 126** HTTP calls succeeded, even with backoff. This is why fail-open matters: in live mode those failures would have been reported as `unknown · unverified`, not guessed.
+
+In CI the triage replays the recorded answers (`demo/jev-fixtures/`), so the build is reproducible and needs no key.
 
 ## Quick start
 

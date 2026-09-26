@@ -46,6 +46,21 @@ const quantile = (values: number[], q: number): number => {
   return sorted[Math.min(sorted.length - 1, Math.floor(q * sorted.length))] ?? NaN;
 };
 
+function persist(results: { latencyMs: { median: number }; successfulCalls: number; httpCalls: number }[]): void {
+  const latencies = results.map((result) => result.latencyMs.median);
+  const totals = results.reduce((acc, result) => ({ ok: acc.ok + result.successfulCalls, http: acc.http + result.httpCalls }), { ok: 0, http: 0 });
+  const summary = {
+    measuredAt: new Date().toISOString(),
+    transport: transport!.name,
+    repeats: REPEATS,
+    httpCallsSucceeded: `${totals.ok}/${totals.http}`,
+    medianOfMedianLatencyMs: quantile(latencies, 0.5),
+    results,
+  };
+  mkdirSync('demo/measurements', { recursive: true });
+  writeFileSync('demo/measurements/jev-repeatability.json', `${JSON.stringify(summary, null, 2)}\n`);
+}
+
 const failing = current.tests.filter((test) => test.attempts.some((attempt) => attempt.status !== 'passed' && attempt.status !== 'skipped'));
 const results = [];
 for (const test of failing) {
@@ -88,12 +103,8 @@ for (const test of failing) {
     failedCalls: failures.length,
     errors: [...new Set(failures)],
   });
-  process.stdout.write(`${test.id}: ${JSON.stringify(counts)} (${samples.length}/${REPEATS} ok)\n`);
+  process.stdout.write(`${test.id}: ${JSON.stringify(counts)} (${samples.length}/${REPEATS} ok, ${rawCalls} HTTP calls)\n`);
+  persist(results);
 }
-
-const latencies = results.map((result) => result.latencyMs.median);
-const totals = results.reduce((acc, result) => ({ ok: acc.ok + result.successfulCalls, http: acc.http + result.httpCalls }), { ok: 0, http: 0 });
-const summary = { firstTryAvailability: `${totals.ok}/${totals.http} HTTP calls succeeded`, measuredAt: new Date().toISOString(), transport: transport.name, repeats: REPEATS, results, medianOfMedianLatencyMs: quantile(latencies, 0.5) };
-mkdirSync('demo/measurements', { recursive: true });
-writeFileSync('demo/measurements/jev-repeatability.json', `${JSON.stringify(summary, null, 2)}\n`);
 process.stdout.write('written demo/measurements/jev-repeatability.json\n');
+

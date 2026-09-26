@@ -1,0 +1,157 @@
+{
+  "measuredAt": "2026-09-26T22:56:41.558Z",
+  "transport": "live via vercel-ai-gateway",
+  "repeats": 5,
+  "httpCallsSucceeded": "17/126",
+  "medianOfMedianLatencyMs": 529,
+  "results": [
+    {
+      "id": "counter.spec.ts › counter reflects a completed item right away",
+      "seededAs": "flaky",
+      "ruleVerdict": "flaky",
+      "jevChoices": {
+        "flaky": 4
+      },
+      "confidence": {
+        "min": 1,
+        "median": 1,
+        "max": 1
+      },
+      "latencyMs": {
+        "median": 529,
+        "p90": 559
+      },
+      "inputTokens": 773,
+      "costUsdPerCall": 0.000032466,
+      "successfulCalls": 4,
+      "httpCalls": 20,
+      "failedCalls": 1,
+      "errors": [
+        "HTTP 429 via vercel-ai-gateway: {\"error\":{\"message\":\"The upstream provider is currently experiencing high demand. Please retry shortly.\",\"type\":\"rate_limit_exceeded\",\"param\":{\"error\":\"The upstream pro"
+      ]
+    },
+    {
+      "id": "edit.spec.ts › renaming a todo keeps its position",
+      "seededAs": "unknown",
+      "ruleVerdict": null,
+      "jevChoices": {
+        "flaky": 2
+      },
+      "confidence": {
+        "min": 0.71,
+        "median": 0.78,
+        "max": 0.78
+      },
+      "latencyMs": {
+        "median": 619,
+        "p90": 619
+      },
+      "inputTokens": 771,
+      "costUsdPerCall": 0.000032382,
+      "successfulCalls": 2,
+      "httpCalls": 22,
+      "failedCalls": 3,
+      "errors": [
+        "HTTP 429 via vercel-ai-gateway: {\"error\":{\"message\":\"The upstream provider is currently experiencing high demand. Please retry shortly.\",\"type\":\"rate_limit_exceeded\",\"param\":{\"error\":\"The upstream pro"
+      ]
+    },
+    {
+      "id": "filters.spec.ts › Completed filter shows only completed todos",
+      "seededAs": "regression",
+      "ruleVerdict": "regression",
+      "jevChoices": {
+        "regression": 1
+      },
+      "confidence": {
+        "min": 0.97,
+        "median": 0.97,
+        "max": 0.97
+      },
+      "latencyMs": {
+        "median": 612,
+        "p90": 612
+      },
+      "inputTokens": 876,
+      "costUsdPerCall": 0.000036792,
+      "successfulCalls": 1,
+      "httpCalls": 27,
+      "failedCalls": 4,
+      "errors": [
+        "HTTP 429 via vercel-ai-gateway: {\"error\":{\"message\":\"The upstream provider is currently experiencing high demand. Please retry shortly.\",\"type\":\"rate_limit_exceeded\",\"param\":{\"error\":\"The upstream pro"
+      ]
+    },
+    {
+      "id": "seed-data.spec.ts › seeded shopping list renders in order",
+      "seededAs": "test-data",
+      "ruleVerdict": null,
+      "jevChoices": {
+        "test-data": 2
+      },
+      "confidence": {
+        "min": 1,
+        "median": 1,
+        "max": 1
+      },
+      "latencyMs": {
+        "median": 462,
+        "p90": 462
+      },
+      "inputTokens": 901,
+      "costUsdPerCall": 0.000037842,
+      "successfulCalls": 2,
+      "httpCalls": 24,
+      "failedCalls": 3,
+      "errors": [
+        "HTTP 429 via vercel-ai-gateway: {\"error\":{\"message\":\"The upstream provider is currently experiencing high demand. Please retry shortly.\",\"type\":\"rate_limit_exceeded\",\"param\":{\"error\":\"The upstream pro"
+      ]
+    },
+    {
+      "id": "sync.spec.ts › backup service answers its health check",
+      "seededAs": "environment",
+      "ruleVerdict": "environment",
+      "jevChoices": {
+        "environment": 3
+      },
+      "confidence": {
+        "min": 0.99,
+        "median": 0.99,
+        "max": 0.99
+      },
+      "latencyMs": {
+        "median": 463,
+        "p90": 580
+      },
+      "inputTokens": 875,
+      "costUsdPerCall": 0.00003675,
+      "successfulCalls": 3,
+      "httpCalls": 19,
+      "failedCalls": 2,
+      "errors": [
+        "HTTP 429 via vercel-ai-gateway: {\"error\":{\"message\":\"The upstream provider is currently experiencing high demand. Please retry shortly.\",\"type\":\"rate_limit_exceeded\",\"param\":{\"error\":\"The upstream pro"
+      ]
+    },
+    {
+      "id": "toggle-all.spec.ts › marks everything complete through its accessible label",
+      "seededAs": "regression",
+      "ruleVerdict": null,
+      "jevChoices": {
+        "regression": 5
+      },
+      "confidence": {
+        "min": 0.62,
+        "median": 0.91,
+        "max": 0.91
+      },
+      "latencyMs": {
+        "median": 471,
+        "p90": 1342
+      },
+      "inputTokens": 783,
+      "costUsdPerCall": 0.000032886,
+      "successfulCalls": 5,
+      "httpCalls": 14,
+      "failedCalls": 0,
+      "errors": []
+    }
+  ]
+}
