@@ -1,0 +1,73 @@
+{
+  "request": {
+    "model": "jev-latest",
+    "state": {
+      "test": "seeded shopping list renders in order",
+      "file": "seed-data.spec.ts",
+      "error": "Error: expect(locator).toHaveText(expected) failed\n\nLocator: getByTestId('todo-title')\nTimeout: 2000ms\n- Expected  - 2\n+ Received  + 1\n\n  Array [\n-   \"Milk\",\n+   \"Oat milk\",\n    \"Eggs\",\n-   \"Bread\",\n  ]\n\nCall log:\n  - Expect \"toHaveText\" getByTestId('todo-title') with timeout 2000ms\n  - waiting for getByTestId('todo-title')\n    21 × locator resolved to 2 elements\n\n\n  12 |   await page.addInitScript((data) => localStorage.setItem('react-todos', data), seed);\n  13 |   await page.goto('./');\n> 14 |   await expect(page.getByTestId('todo-title')).toHaveText(['Milk', 'Eggs', 'Bread']);\n     |                                                ^\n  15 | });\n  16 |\n    at demo/tests/seed-data.spec.ts:14:48",
+      "stack": [
+        "at demo/tests/seed-data.spec.ts:14:48"
+      ],
+      "attemptsInThisRun": [
+        "failed",
+        "failed"
+      ],
+      "history": "8 passed, 0 failed, 0 passed-on-retry out of 8 prior runs; 0 outcome flips; sequence oldest→newest: passed, passed, passed, passed, passed, passed, passed, passed",
+      "changedApplicationFiles": [],
+      "changedTestFilesOrData": [
+        "demo/tests/fixtures/shopping-list.json"
+      ],
+      "infrastructureMarkers": [],
+      "testDataMarkers": [
+        "fixture/seed reference"
+      ]
+    },
+    "questions": {
+      "cause": {
+        "type": "choice",
+        "instructions": "What is the most likely root cause of this CI test failure?",
+        "criteria": {
+          "regression": "The application under test changed behaviour: the test used to pass and now fails on a real functional difference, usually related to application code changed in this diff",
+          "flaky": "The test is nondeterministic: a race, a timing-dependent wait or order dependence, so the same code sometimes passes and sometimes fails",
+          "environment": "Infrastructure outside the code under test: network errors, a service or dependency down, DNS, runner resources, external timeouts",
+          "test-data": "The test's own data is wrong: stale or edited fixtures, seed data missing or already consumed, expectations tied to data that changed"
+        }
+      },
+      "retryWouldPass": {
+        "type": "noul",
+        "instructions": "Would this test most likely pass if it were re-run on the same commit without any change?"
+      }
+    }
+  },
+  "response": {
+    "model": "jev-latest",
+    "answers": {
+      "cause": {
+        "type": "choice",
+        "choice": "test-data",
+        "confidence": 1,
+        "probabilities": {
+          "flaky": 0,
+          "environment": 0,
+          "regression": 0,
+          "test-data": 1
+        }
+      },
+      "retryWouldPass": {
+        "type": "noul",
+        "noul": 0.39
+      }
+    },
+    "usage": {
+      "input_tokens": 901,
+      "output_tokens": 71
+    },
+    "provider_metadata": {
+      "gateway": {
+        "cost": "0.000037842"
+      }
+    }
+  },
+  "latencyMs": 570,
+  "recordedAt": "2026-09-26T22:00:31.703Z"
+}

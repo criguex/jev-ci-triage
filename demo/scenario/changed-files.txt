@@ -1,0 +1,4 @@
+demo/app/filters.js
+demo/app/index.html
+demo/tests/fixtures/shopping-list.json
+demo/tests/edit.spec.ts

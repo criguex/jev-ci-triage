@@ -1,0 +1,69 @@
+{
+  "request": {
+    "model": "jev-latest",
+    "state": {
+      "test": "marks everything complete through its accessible label",
+      "file": "toggle-all.spec.ts",
+      "error": "Test timeout of 8000ms exceeded.\n\nError: locator.check: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByLabel('Mark all as complete')\n\n\n   6 |   await page.goto('./');\n   7 |   await addTodos(page, ['buy some cheese', 'feed the cat']);\n>  8 |   await page.getByLabel('Mark all as complete').check();\n     |                                                 ^\n   9 |   await expect(page.getByTestId('todo-item')).toHaveClass([/completed/, /completed/]);\n  10 | });\n  11 |\n    at demo/tests/toggle-all.spec.ts:8:49",
+      "stack": [],
+      "attemptsInThisRun": [
+        "timedOut",
+        "timedOut"
+      ],
+      "history": "3 passed, 0 failed, 0 passed-on-retry out of 3 prior runs; 0 outcome flips; sequence oldest→newest: passed, passed, passed",
+      "changedApplicationFiles": [
+        "demo/app/index.html"
+      ],
+      "changedTestFilesOrData": [],
+      "infrastructureMarkers": [],
+      "testDataMarkers": []
+    },
+    "questions": {
+      "cause": {
+        "type": "choice",
+        "instructions": "What is the most likely root cause of this CI test failure?",
+        "criteria": {
+          "regression": "The application under test changed behaviour: the test used to pass and now fails on a real functional difference, usually related to application code changed in this diff",
+          "flaky": "The test is nondeterministic: a race, a timing-dependent wait or order dependence, so the same code sometimes passes and sometimes fails",
+          "environment": "Infrastructure outside the code under test: network errors, a service or dependency down, DNS, runner resources, external timeouts",
+          "test-data": "The test's own data is wrong: stale or edited fixtures, seed data missing or already consumed, expectations tied to data that changed"
+        }
+      },
+      "retryWouldPass": {
+        "type": "noul",
+        "instructions": "Would this test most likely pass if it were re-run on the same commit without any change?"
+      }
+    }
+  },
+  "response": {
+    "model": "jev-latest",
+    "answers": {
+      "cause": {
+        "type": "choice",
+        "choice": "regression",
+        "confidence": 0.61,
+        "probabilities": {
+          "environment": 0.02,
+          "flaky": 0.27,
+          "regression": 0.71,
+          "test-data": 0
+        }
+      },
+      "retryWouldPass": {
+        "type": "noul",
+        "noul": 0.46
+      }
+    },
+    "usage": {
+      "input_tokens": 783,
+      "output_tokens": 72
+    },
+    "provider_metadata": {
+      "gateway": {
+        "cost": "0.000032886"
+      }
+    }
+  },
+  "latencyMs": 579,
+  "recordedAt": "2026-09-26T22:00:31.752Z"
+}

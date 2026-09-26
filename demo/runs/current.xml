@@ -1,0 +1,336 @@
+<testsuites id="" name="" tests="11" failures="2" skipped="0" errors="3" time="21.696454">
+<testsuite name="counter.spec.ts" timestamp="2026-09-26T21:58:09.288Z" hostname="" tests="1" failures="0" skipped="0" time="0.879" errors="0">
+<testcase name="counter reflects a completed item right away" classname="counter.spec.ts" time="0.879">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/counter-counter-reflects-a-completed-item-right-away/error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="edit.spec.ts" timestamp="2026-09-26T21:58:09.288Z" hostname="" tests="1" failures="0" skipped="0" time="16.057" errors="1">
+<testcase name="renaming a todo keeps its position" classname="edit.spec.ts" time="16.057">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/edit-renaming-a-todo-keeps-its-position/error-context.md]]
+
+[[ATTACHMENT|../../test-results/edit-renaming-a-todo-keeps-its-position-retry1/error-context.md]]
+]]>
+</system-out>
+<error message="Test timeout of 8000ms exceeded." type="Error">
+<![CDATA[  edit.spec.ts:4:1 › renaming a todo keeps its position ────────────────────────────────────────────
+
+    Test timeout of 8000ms exceeded.
+
+    Error: locator.fill: Test timeout of 8000ms exceeded.
+    Call log:
+      - waiting for getByRole('textbox', { name: 'Edit' })
+
+
+       8 |   await page.getByTestId('todo-title').first().dblclick();
+       9 |   const editor = page.getByRole('textbox', { name: 'Edit' });
+    > 10 |   await editor.fill('buy goat cheese');
+         |                ^
+      11 |   await editor.press('Enter');
+      12 |   await expect(page.getByTestId('todo-title')).toHaveText(['buy goat cheese', 'feed the cat']);
+      13 | });
+        at demo/tests/edit.spec.ts:10:16
+
+    Error Context: ../../test-results/edit-renaming-a-todo-keeps-its-position/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Test timeout of 8000ms exceeded.
+
+    Error: locator.fill: Test timeout of 8000ms exceeded.
+    Call log:
+      - waiting for getByRole('textbox', { name: 'Edit' })
+
+
+       8 |   await page.getByTestId('todo-title').first().dblclick();
+       9 |   const editor = page.getByRole('textbox', { name: 'Edit' });
+    > 10 |   await editor.fill('buy goat cheese');
+         |                ^
+      11 |   await editor.press('Enter');
+      12 |   await expect(page.getByTestId('todo-title')).toHaveText(['buy goat cheese', 'feed the cat']);
+      13 | });
+        at demo/tests/edit.spec.ts:10:16
+
+    Error Context: ../../test-results/edit-renaming-a-todo-keeps-its-position-retry1/error-context.md
+]]>
+</error>
+</testcase>
+</testsuite>
+<testsuite name="filters.spec.ts" timestamp="2026-09-26T21:58:09.288Z" hostname="" tests="2" failures="1" skipped="0" time="5.176" errors="0">
+<testcase name="Active filter shows only active todos" classname="filters.spec.ts" time="0.412">
+</testcase>
+<testcase name="Completed filter shows only completed todos" classname="filters.spec.ts" time="4.764">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/filters-Completed-filter-shows-only-completed-todos/error-context.md]]
+
+[[ATTACHMENT|../../test-results/filters-Completed-filter-shows-only-completed-todos-retry1/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(locator).toHaveText(expected) failed" type="expect.toHaveText">
+<![CDATA[  filters.spec.ts:15:1 › Completed filter shows only completed todos ───────────────────────────────
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByTestId('todo-title')
+    Timeout: 2000ms
+    - Expected  - 0
+    + Received  + 2
+
+      Array [
+    +   "buy some cheese",
+        "feed the cat",
+    +   "book a doctors appointment",
+      ]
+
+    Call log:
+      - Expect "toHaveText" getByTestId('todo-title') with timeout 2000ms
+      - waiting for getByTestId('todo-title')
+        20 × locator resolved to 3 elements
+
+
+      15 | test('Completed filter shows only completed todos', async ({ page }) => {
+      16 |   await page.getByRole('link', { name: 'Completed' }).click();
+    > 17 |   await expect(page.getByTestId('todo-title')).toHaveText(['feed the cat']);
+         |                                                ^
+      18 | });
+      19 |
+        at demo/tests/filters.spec.ts:17:48
+
+    Error Context: ../../test-results/filters-Completed-filter-shows-only-completed-todos/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByTestId('todo-title')
+    Timeout: 2000ms
+    - Expected  - 0
+    + Received  + 2
+
+      Array [
+    +   "buy some cheese",
+        "feed the cat",
+    +   "book a doctors appointment",
+      ]
+
+    Call log:
+      - Expect "toHaveText" getByTestId('todo-title') with timeout 2000ms
+      - waiting for getByTestId('todo-title')
+        21 × locator resolved to 3 elements
+
+
+      15 | test('Completed filter shows only completed todos', async ({ page }) => {
+      16 |   await page.getByRole('link', { name: 'Completed' }).click();
+    > 17 |   await expect(page.getByTestId('todo-title')).toHaveText(['feed the cat']);
+         |                                                ^
+      18 | });
+      19 |
+        at demo/tests/filters.spec.ts:17:48
+
+    Error Context: ../../test-results/filters-Completed-filter-shows-only-completed-todos-retry1/error-context.md
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="seed-data.spec.ts" timestamp="2026-09-26T21:58:09.288Z" hostname="" tests="1" failures="1" skipped="0" time="4.355" errors="0">
+<testcase name="seeded shopping list renders in order" classname="seed-data.spec.ts" time="4.355">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/seed-data-seeded-shopping-list-renders-in-order/error-context.md]]
+
+[[ATTACHMENT|../../test-results/seed-data-seeded-shopping-list-renders-in-order-retry1/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(locator).toHaveText(expected) failed" type="expect.toHaveText">
+<![CDATA[  seed-data.spec.ts:11:1 › seeded shopping list renders in order ───────────────────────────────────
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByTestId('todo-title')
+    Timeout: 2000ms
+    - Expected  - 2
+    + Received  + 1
+
+      Array [
+    -   "Milk",
+    +   "Oat milk",
+        "Eggs",
+    -   "Bread",
+      ]
+
+    Call log:
+      - Expect "toHaveText" getByTestId('todo-title') with timeout 2000ms
+      - waiting for getByTestId('todo-title')
+        21 × locator resolved to 2 elements
+
+
+      12 |   await page.addInitScript((data) => localStorage.setItem('react-todos', data), seed);
+      13 |   await page.goto('./');
+    > 14 |   await expect(page.getByTestId('todo-title')).toHaveText(['Milk', 'Eggs', 'Bread']);
+         |                                                ^
+      15 | });
+      16 |
+        at demo/tests/seed-data.spec.ts:14:48
+
+    Error Context: ../../test-results/seed-data-seeded-shopping-list-renders-in-order/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByTestId('todo-title')
+    Timeout: 2000ms
+    - Expected  - 2
+    + Received  + 1
+
+      Array [
+    -   "Milk",
+    +   "Oat milk",
+        "Eggs",
+    -   "Bread",
+      ]
+
+    Call log:
+      - Expect "toHaveText" getByTestId('todo-title') with timeout 2000ms
+      - waiting for getByTestId('todo-title')
+        21 × locator resolved to 2 elements
+
+
+      12 |   await page.addInitScript((data) => localStorage.setItem('react-todos', data), seed);
+      13 |   await page.goto('./');
+    > 14 |   await expect(page.getByTestId('todo-title')).toHaveText(['Milk', 'Eggs', 'Bread']);
+         |                                                ^
+      15 | });
+      16 |
+        at demo/tests/seed-data.spec.ts:14:48
+
+    Error Context: ../../test-results/seed-data-seeded-shopping-list-renders-in-order-retry1/error-context.md
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="sync.spec.ts" timestamp="2026-09-26T21:58:09.288Z" hostname="" tests="1" failures="0" skipped="0" time="0.164" errors="1">
+<testcase name="backup service answers its health check" classname="sync.spec.ts" time="0.164">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/sync-backup-service-answers-its-health-check/error-context.md]]
+
+[[ATTACHMENT|../../test-results/sync-backup-service-answers-its-health-check-retry1/error-context.md]]
+]]>
+</system-out>
+<error message="apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:9" type="Error">
+<![CDATA[  sync.spec.ts:5:1 › backup service answers its health check ───────────────────────────────────────
+
+    Error: apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:9
+    Call log:
+      - → GET http://127.0.0.1:9/api/health
+        - user-agent: Playwright/1.63.0 (arm64; macOS 26.6) node/26.5
+        - accept: */*
+        - accept-encoding: gzip,deflate,br
+
+
+       5 | test('backup service answers its health check', async ({ request, baseURL }) => {
+       6 |   test.skip(!syncApi && Boolean(process.env.BASE_URL), 'no backup service next to the public demo');
+    >  7 |   const response = await request.get(`${syncApi ?? baseURL}/api/health`, { timeout: 3_000 });
+         |                                  ^
+       8 |   expect(response.ok()).toBe(true);
+       9 | });
+      10 |
+        at demo/tests/sync.spec.ts:7:34
+
+    Error Context: ../../test-results/sync-backup-service-answers-its-health-check/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:9
+    Call log:
+      - → GET http://127.0.0.1:9/api/health
+        - user-agent: Playwright/1.63.0 (arm64; macOS 26.6) node/26.5
+        - accept: */*
+        - accept-encoding: gzip,deflate,br
+
+
+       5 | test('backup service answers its health check', async ({ request, baseURL }) => {
+       6 |   test.skip(!syncApi && Boolean(process.env.BASE_URL), 'no backup service next to the public demo');
+    >  7 |   const response = await request.get(`${syncApi ?? baseURL}/api/health`, { timeout: 3_000 });
+         |                                  ^
+       8 |   expect(response.ok()).toBe(true);
+       9 | });
+      10 |
+        at demo/tests/sync.spec.ts:7:34
+
+    Error Context: ../../test-results/sync-backup-service-answers-its-health-check-retry1/error-context.md
+]]>
+</error>
+</testcase>
+</testsuite>
+<testsuite name="todos.spec.ts" timestamp="2026-09-26T21:58:09.288Z" hostname="" tests="4" failures="0" skipped="0" time="0.93" errors="0">
+<testcase name="adds todos in the order they were typed" classname="todos.spec.ts" time="0.302">
+</testcase>
+<testcase name="completing a todo strikes it through" classname="todos.spec.ts" time="0.264">
+</testcase>
+<testcase name="clear completed removes only completed todos" classname="todos.spec.ts" time="0.273">
+</testcase>
+<testcase name="counter shows items left" classname="todos.spec.ts" time="0.091">
+</testcase>
+</testsuite>
+<testsuite name="toggle-all.spec.ts" timestamp="2026-09-26T21:58:09.288Z" hostname="" tests="1" failures="0" skipped="0" time="16.043" errors="1">
+<testcase name="marks everything complete through its accessible label" classname="toggle-all.spec.ts" time="16.043">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/toggle-all-marks-everythin-5ce28-hrough-its-accessible-label/error-context.md]]
+
+[[ATTACHMENT|../../test-results/toggle-all-marks-everythin-5ce28-hrough-its-accessible-label-retry1/error-context.md]]
+]]>
+</system-out>
+<error message="Test timeout of 8000ms exceeded." type="Error">
+<![CDATA[  toggle-all.spec.ts:4:1 › marks everything complete through its accessible label ──────────────────
+
+    Test timeout of 8000ms exceeded.
+
+    Error: locator.check: Test timeout of 8000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Mark all as complete')
+
+
+       6 |   await page.goto('./');
+       7 |   await addTodos(page, ['buy some cheese', 'feed the cat']);
+    >  8 |   await page.getByLabel('Mark all as complete').check();
+         |                                                 ^
+       9 |   await expect(page.getByTestId('todo-item')).toHaveClass([/completed/, /completed/]);
+      10 | });
+      11 |
+        at demo/tests/toggle-all.spec.ts:8:49
+
+    Error Context: ../../test-results/toggle-all-marks-everythin-5ce28-hrough-its-accessible-label/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Test timeout of 8000ms exceeded.
+
+    Error: locator.check: Test timeout of 8000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Mark all as complete')
+
+
+       6 |   await page.goto('./');
+       7 |   await addTodos(page, ['buy some cheese', 'feed the cat']);
+    >  8 |   await page.getByLabel('Mark all as complete').check();
+         |                                                 ^
+       9 |   await expect(page.getByTestId('todo-item')).toHaveClass([/completed/, /completed/]);
+      10 | });
+      11 |
+        at demo/tests/toggle-all.spec.ts:8:49
+
+    Error Context: ../../test-results/toggle-all-marks-everythin-5ce28-hrough-its-accessible-label-retry1/error-context.md
+]]>
+</error>
+</testcase>
+</testsuite>
+</testsuites>

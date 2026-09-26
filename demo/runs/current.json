@@ -1,0 +1,899 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node/26.5.0_1/bin/node",
+      "node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "demo/playwright.config.ts"
+    ],
+    "configFile": "demo/playwright.config.ts",
+    "rootDir": "demo/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "",
+        "name": "",
+        "testDir": "demo/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 8000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "demo/runs/current.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "demo/runs/current.xml"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": {
+      "command": "node server.mjs",
+      "url": "http://localhost:4173/api/health",
+      "reuseExistingServer": false,
+      "env": {
+        "DEMO_SCENARIO": "candidate",
+        "DEMO_PORT": "4173"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "counter.spec.ts",
+      "file": "counter.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "counter reflects a completed item right away",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 484,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7m2\u001b[27m items left\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m3\u001b[27m items left\"\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7m2\u001b[27m items left\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m3\u001b[27m items left\"\u001b[39m\n    at demo/tests/counter.spec.ts:9:62",
+                    "location": {
+                      "file": "demo/tests/counter.spec.ts",
+                      "column": 62,
+                      "line": 9
+                    },
+                    "snippet": "   7 |   await page.getByRole('checkbox', { name: 'Toggle Todo' }).first().check();\n   8 |   await page.waitForTimeout(120);\n>  9 |   expect(await page.getByTestId('todo-count').textContent()).toBe('2 items left');\n     |                                                              ^\n  10 | });\n  11 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "demo/tests/counter.spec.ts",
+                        "column": 62,
+                        "line": 9
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7m2\u001b[27m items left\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m3\u001b[27m items left\"\u001b[39m\n\n   7 |   await page.getByRole('checkbox', { name: 'Toggle Todo' }).first().check();\n   8 |   await page.waitForTimeout(120);\n>  9 |   expect(await page.getByTestId('todo-count').textContent()).toBe('2 items left');\n     |                                                              ^\n  10 | });\n  11 |\n    at demo/tests/counter.spec.ts:9:62"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:58:09.549Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "test-results/counter-counter-reflects-a-completed-item-right-away/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "demo/tests/counter.spec.ts",
+                    "column": 62,
+                    "line": 9
+                  }
+                },
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 395,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-09-26T21:58:10.567Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "flaky"
+            }
+          ],
+          "id": "50879ed375f8988ef978-320a056b6dfd48fefa16",
+          "file": "counter.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "edit.spec.ts",
+      "file": "edit.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "renaming a todo keeps its position",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "timedOut",
+                  "duration": 8024,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 8000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 8000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 8000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "demo/tests/edit.spec.ts",
+                        "column": 16,
+                        "line": 10
+                      },
+                      "message": "Error: locator.fill: Test timeout of 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Edit' })\u001b[22m\n\n\n   8 |   await page.getByTestId('todo-title').first().dblclick();\n   9 |   const editor = page.getByRole('textbox', { name: 'Edit' });\n> 10 |   await editor.fill('buy goat cheese');\n     |                ^\n  11 |   await editor.press('Enter');\n  12 |   await expect(page.getByTestId('todo-title')).toHaveText(['buy goat cheese', 'feed the cat']);\n  13 | });\n    at demo/tests/edit.spec.ts:10:16"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:58:09.569Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "test-results/edit-renaming-a-todo-keeps-its-position/error-context.md"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 1,
+                  "status": "timedOut",
+                  "duration": 8033,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 8000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 8000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 8000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "demo/tests/edit.spec.ts",
+                        "column": 16,
+                        "line": 10
+                      },
+                      "message": "Error: locator.fill: Test timeout of 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Edit' })\u001b[22m\n\n\n   8 |   await page.getByTestId('todo-title').first().dblclick();\n   9 |   const editor = page.getByRole('textbox', { name: 'Edit' });\n> 10 |   await editor.fill('buy goat cheese');\n     |                ^\n  11 |   await editor.press('Enter');\n  12 |   await expect(page.getByTestId('todo-title')).toHaveText(['buy goat cheese', 'feed the cat']);\n  13 | });\n    at demo/tests/edit.spec.ts:10:16"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-09-26T21:58:18.307Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "test-results/edit-renaming-a-todo-keeps-its-position-retry1/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9ed70afab1bbfad1daab-614fee7a0b5f98b47ccc",
+          "file": "edit.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "filters.spec.ts",
+      "file": "filters.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Active filter shows only active todos",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 412,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:58:09.554Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6174a577dcf149f42c01-48f4fdac522e9f2e5896",
+          "file": "filters.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "Completed filter shows only completed todos",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 3,
+                  "status": "failed",
+                  "duration": 2438,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('todo-title')\nTimeout: 2000ms\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[31m+   \"buy some cheese\",\u001b[39m\n\u001b[2m    \"feed the cat\",\u001b[22m\n\u001b[31m+   \"book a doctors appointment\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('todo-title') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('todo-title')\u001b[22m\n\u001b[2m    20 × locator resolved to 3 elements\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('todo-title')\nTimeout: 2000ms\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[31m+   \"buy some cheese\",\u001b[39m\n\u001b[2m    \"feed the cat\",\u001b[22m\n\u001b[31m+   \"book a doctors appointment\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('todo-title') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('todo-title')\u001b[22m\n\u001b[2m    20 × locator resolved to 3 elements\u001b[22m\n\n    at demo/tests/filters.spec.ts:17:48",
+                    "location": {
+                      "file": "demo/tests/filters.spec.ts",
+                      "column": 48,
+                      "line": 17
+                    },
+                    "snippet": "  15 | test('Completed filter shows only completed todos', async ({ page }) => {\n  16 |   await page.getByRole('link', { name: 'Completed' }).click();\n> 17 |   await expect(page.getByTestId('todo-title')).toHaveText(['feed the cat']);\n     |                                                ^\n  18 | });\n  19 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "demo/tests/filters.spec.ts",
+                        "column": 48,
+                        "line": 17
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('todo-title')\nTimeout: 2000ms\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[31m+   \"buy some cheese\",\u001b[39m\n\u001b[2m    \"feed the cat\",\u001b[22m\n\u001b[31m+   \"book a doctors appointment\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('todo-title') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('todo-title')\u001b[22m\n\u001b[2m    20 × locator resolved to 3 elements\u001b[22m\n\n\n  15 | test('Completed filter shows only completed todos', async ({ page }) => {\n  16 |   await page.getByRole('link', { name: 'Completed' }).click();\n> 17 |   await expect(page.getByTestId('todo-title')).toHaveText(['feed the cat']);\n     |                                                ^\n  18 | });\n  19 |\n    at demo/tests/filters.spec.ts:17:48"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:58:09.557Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "test-results/filters-Completed-filter-shows-only-completed-todos/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "demo/tests/filters.spec.ts",
+                    "column": 48,
+                    "line": 17
+                  }
+                },
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 3,
+                  "status": "failed",
+                  "duration": 2326,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('todo-title')\nTimeout: 2000ms\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[31m+   \"buy some cheese\",\u001b[39m\n\u001b[2m    \"feed the cat\",\u001b[22m\n\u001b[31m+   \"book a doctors appointment\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('todo-title') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('todo-title')\u001b[22m\n\u001b[2m    21 × locator resolved to 3 elements\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('todo-title')\nTimeout: 2000ms\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[31m+   \"buy some cheese\",\u001b[39m\n\u001b[2m    \"feed the cat\",\u001b[22m\n\u001b[31m+   \"book a doctors appointment\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('todo-title') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('todo-title')\u001b[22m\n\u001b[2m    21 × locator resolved to 3 elements\u001b[22m\n\n    at demo/tests/filters.spec.ts:17:48",
+                    "location": {
+                      "file": "demo/tests/filters.spec.ts",
+                      "column": 48,
+                      "line": 17
+                    },
+                    "snippet": "  15 | test('Completed filter shows only completed todos', async ({ page }) => {\n  16 |   await page.getByRole('link', { name: 'Completed' }).click();\n> 17 |   await expect(page.getByTestId('todo-title')).toHaveText(['feed the cat']);\n     |                                                ^\n  18 | });\n  19 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "demo/tests/filters.spec.ts",
+                        "column": 48,
+                        "line": 17
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('todo-title')\nTimeout: 2000ms\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[31m+   \"buy some cheese\",\u001b[39m\n\u001b[2m    \"feed the cat\",\u001b[22m\n\u001b[31m+   \"book a doctors appointment\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('todo-title') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('todo-title')\u001b[22m\n\u001b[2m    21 × locator resolved to 3 elements\u001b[22m\n\n\n  15 | test('Completed filter shows only completed todos', async ({ page }) => {\n  16 |   await page.getByRole('link', { name: 'Completed' }).click();\n> 17 |   await expect(page.getByTestId('todo-title')).toHaveText(['feed the cat']);\n     |                                                ^\n  18 | });\n  19 |\n    at demo/tests/filters.spec.ts:17:48"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-09-26T21:58:13.722Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "test-results/filters-Completed-filter-shows-only-completed-todos-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "demo/tests/filters.spec.ts",
+                    "column": 48,
+                    "line": 17
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6174a577dcf149f42c01-0bd98d04ad9e302a80e9",
+          "file": "filters.spec.ts",
+          "line": 15,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "seed-data.spec.ts",
+      "file": "seed-data.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "seeded shopping list renders in order",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "failed",
+                  "duration": 2180,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('todo-title')\nTimeout: 2000ms\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"Milk\",\u001b[39m\n\u001b[31m+   \"Oat milk\",\u001b[39m\n\u001b[2m    \"Eggs\",\u001b[22m\n\u001b[32m-   \"Bread\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('todo-title') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('todo-title')\u001b[22m\n\u001b[2m    21 × locator resolved to 2 elements\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('todo-title')\nTimeout: 2000ms\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"Milk\",\u001b[39m\n\u001b[31m+   \"Oat milk\",\u001b[39m\n\u001b[2m    \"Eggs\",\u001b[22m\n\u001b[32m-   \"Bread\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('todo-title') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('todo-title')\u001b[22m\n\u001b[2m    21 × locator resolved to 2 elements\u001b[22m\n\n    at demo/tests/seed-data.spec.ts:14:48",
+                    "location": {
+                      "file": "demo/tests/seed-data.spec.ts",
+                      "column": 48,
+                      "line": 14
+                    },
+                    "snippet": "  12 |   await page.addInitScript((data) => localStorage.setItem('react-todos', data), seed);\n  13 |   await page.goto('./');\n> 14 |   await expect(page.getByTestId('todo-title')).toHaveText(['Milk', 'Eggs', 'Bread']);\n     |                                                ^\n  15 | });\n  16 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "demo/tests/seed-data.spec.ts",
+                        "column": 48,
+                        "line": 14
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('todo-title')\nTimeout: 2000ms\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"Milk\",\u001b[39m\n\u001b[31m+   \"Oat milk\",\u001b[39m\n\u001b[2m    \"Eggs\",\u001b[22m\n\u001b[32m-   \"Bread\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('todo-title') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('todo-title')\u001b[22m\n\u001b[2m    21 × locator resolved to 2 elements\u001b[22m\n\n\n  12 |   await page.addInitScript((data) => localStorage.setItem('react-todos', data), seed);\n  13 |   await page.goto('./');\n> 14 |   await expect(page.getByTestId('todo-title')).toHaveText(['Milk', 'Eggs', 'Bread']);\n     |                                                ^\n  15 | });\n  16 |\n    at demo/tests/seed-data.spec.ts:14:48"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:58:10.151Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "test-results/seed-data-seeded-shopping-list-renders-in-order/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "demo/tests/seed-data.spec.ts",
+                    "column": 48,
+                    "line": 14
+                  }
+                },
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 2,
+                  "status": "failed",
+                  "duration": 2175,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('todo-title')\nTimeout: 2000ms\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"Milk\",\u001b[39m\n\u001b[31m+   \"Oat milk\",\u001b[39m\n\u001b[2m    \"Eggs\",\u001b[22m\n\u001b[32m-   \"Bread\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('todo-title') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('todo-title')\u001b[22m\n\u001b[2m    21 × locator resolved to 2 elements\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('todo-title')\nTimeout: 2000ms\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"Milk\",\u001b[39m\n\u001b[31m+   \"Oat milk\",\u001b[39m\n\u001b[2m    \"Eggs\",\u001b[22m\n\u001b[32m-   \"Bread\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('todo-title') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('todo-title')\u001b[22m\n\u001b[2m    21 × locator resolved to 2 elements\u001b[22m\n\n    at demo/tests/seed-data.spec.ts:14:48",
+                    "location": {
+                      "file": "demo/tests/seed-data.spec.ts",
+                      "column": 48,
+                      "line": 14
+                    },
+                    "snippet": "  12 |   await page.addInitScript((data) => localStorage.setItem('react-todos', data), seed);\n  13 |   await page.goto('./');\n> 14 |   await expect(page.getByTestId('todo-title')).toHaveText(['Milk', 'Eggs', 'Bread']);\n     |                                                ^\n  15 | });\n  16 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "demo/tests/seed-data.spec.ts",
+                        "column": 48,
+                        "line": 14
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('todo-title')\nTimeout: 2000ms\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"Milk\",\u001b[39m\n\u001b[31m+   \"Oat milk\",\u001b[39m\n\u001b[2m    \"Eggs\",\u001b[22m\n\u001b[32m-   \"Bread\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('todo-title') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('todo-title')\u001b[22m\n\u001b[2m    21 × locator resolved to 2 elements\u001b[22m\n\n\n  12 |   await page.addInitScript((data) => localStorage.setItem('react-todos', data), seed);\n  13 |   await page.goto('./');\n> 14 |   await expect(page.getByTestId('todo-title')).toHaveText(['Milk', 'Eggs', 'Bread']);\n     |                                                ^\n  15 | });\n  16 |\n    at demo/tests/seed-data.spec.ts:14:48"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-09-26T21:58:13.797Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "test-results/seed-data-seeded-shopping-list-renders-in-order-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "demo/tests/seed-data.spec.ts",
+                    "column": 48,
+                    "line": 14
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2345eacddb101d6b3858-ff45daa3fa0dc3a37a3f",
+          "file": "seed-data.spec.ts",
+          "line": 11,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "sync.spec.ts",
+      "file": "sync.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "backup service answers its health check",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 42,
+                  "error": {
+                    "message": "Error: apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:9\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:9/api/health\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (arm64; macOS 26.6) node/26.5\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n",
+                    "stack": "Error: apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:9\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:9/api/health\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (arm64; macOS 26.6) node/26.5\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\n    at demo/tests/sync.spec.ts:7:34",
+                    "location": {
+                      "file": "demo/tests/sync.spec.ts",
+                      "column": 34,
+                      "line": 7
+                    },
+                    "snippet": "   5 | test('backup service answers its health check', async ({ request, baseURL }) => {\n   6 |   test.skip(!syncApi && Boolean(process.env.BASE_URL), 'no backup service next to the public demo');\n>  7 |   const response = await request.get(`${syncApi ?? baseURL}/api/health`, { timeout: 3_000 });\n     |                                  ^\n   8 |   expect(response.ok()).toBe(true);\n   9 | });\n  10 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "demo/tests/sync.spec.ts",
+                        "column": 34,
+                        "line": 7
+                      },
+                      "message": "Error: apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:9\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:9/api/health\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (arm64; macOS 26.6) node/26.5\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\n\n   5 | test('backup service answers its health check', async ({ request, baseURL }) => {\n   6 |   test.skip(!syncApi && Boolean(process.env.BASE_URL), 'no backup service next to the public demo');\n>  7 |   const response = await request.get(`${syncApi ?? baseURL}/api/health`, { timeout: 3_000 });\n     |                                  ^\n   8 |   expect(response.ok()).toBe(true);\n   9 | });\n  10 |\n    at demo/tests/sync.spec.ts:7:34"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:58:11.165Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "test-results/sync-backup-service-answers-its-health-check/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "demo/tests/sync.spec.ts",
+                    "column": 34,
+                    "line": 7
+                  }
+                },
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 122,
+                  "error": {
+                    "message": "Error: apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:9\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:9/api/health\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (arm64; macOS 26.6) node/26.5\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n",
+                    "stack": "Error: apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:9\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:9/api/health\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (arm64; macOS 26.6) node/26.5\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\n    at demo/tests/sync.spec.ts:7:34",
+                    "location": {
+                      "file": "demo/tests/sync.spec.ts",
+                      "column": 34,
+                      "line": 7
+                    },
+                    "snippet": "   5 | test('backup service answers its health check', async ({ request, baseURL }) => {\n   6 |   test.skip(!syncApi && Boolean(process.env.BASE_URL), 'no backup service next to the public demo');\n>  7 |   const response = await request.get(`${syncApi ?? baseURL}/api/health`, { timeout: 3_000 });\n     |                                  ^\n   8 |   expect(response.ok()).toBe(true);\n   9 | });\n  10 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "demo/tests/sync.spec.ts",
+                        "column": 34,
+                        "line": 7
+                      },
+                      "message": "Error: apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:9\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:9/api/health\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (arm64; macOS 26.6) node/26.5\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\n\n   5 | test('backup service answers its health check', async ({ request, baseURL }) => {\n   6 |   test.skip(!syncApi && Boolean(process.env.BASE_URL), 'no backup service next to the public demo');\n>  7 |   const response = await request.get(`${syncApi ?? baseURL}/api/health`, { timeout: 3_000 });\n     |                                  ^\n   8 |   expect(response.ok()).toBe(true);\n   9 | });\n  10 |\n    at demo/tests/sync.spec.ts:7:34"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-09-26T21:58:11.850Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "test-results/sync-backup-service-answers-its-health-check-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "demo/tests/sync.spec.ts",
+                    "column": 34,
+                    "line": 7
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0cc518b4e81cfdbffc61-856da5c98128eb76ea24",
+          "file": "sync.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "todos.spec.ts",
+      "file": "todos.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "adds todos in the order they were typed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 302,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:58:13.008Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8a9e645a89191b4a5606-0e7f149eba5cd99b0500",
+          "file": "todos.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "completing a todo strikes it through",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 264,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:58:13.628Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8a9e645a89191b4a5606-a7155acca66f9d305ee5",
+          "file": "todos.spec.ts",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "clear completed removes only completed todos",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 273,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:58:13.902Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8a9e645a89191b4a5606-4659f9ffed181d8abd05",
+          "file": "todos.spec.ts",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "counter shows items left",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 91,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:58:14.183Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8a9e645a89191b4a5606-5b5286ecc6b738cefee8",
+          "file": "todos.spec.ts",
+          "line": 26,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "toggle-all.spec.ts",
+      "file": "toggle-all.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "marks everything complete through its accessible label",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 8018,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 8000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 8000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 8000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "demo/tests/toggle-all.spec.ts",
+                        "column": 49,
+                        "line": 8
+                      },
+                      "message": "Error: locator.check: Test timeout of 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Mark all as complete')\u001b[22m\n\n\n   6 |   await page.goto('./');\n   7 |   await addTodos(page, ['buy some cheese', 'feed the cat']);\n>  8 |   await page.getByLabel('Mark all as complete').check();\n     |                                                 ^\n   9 |   await expect(page.getByTestId('todo-item')).toHaveClass([/completed/, /completed/]);\n  10 | });\n  11 |\n    at demo/tests/toggle-all.spec.ts:8:49"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:58:14.283Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "test-results/toggle-all-marks-everythin-5ce28-hrough-its-accessible-label/error-context.md"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 8025,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 8000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 8000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 8000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "demo/tests/toggle-all.spec.ts",
+                        "column": 49,
+                        "line": 8
+                      },
+                      "message": "Error: locator.check: Test timeout of 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Mark all as complete')\u001b[22m\n\n\n   6 |   await page.goto('./');\n   7 |   await addTodos(page, ['buy some cheese', 'feed the cat']);\n>  8 |   await page.getByLabel('Mark all as complete').check();\n     |                                                 ^\n   9 |   await expect(page.getByTestId('todo-item')).toHaveClass([/completed/, /completed/]);\n  10 | });\n  11 |\n    at demo/tests/toggle-all.spec.ts:8:49"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-09-26T21:58:22.594Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "test-results/toggle-all-marks-everythin-5ce28-hrough-its-accessible-label-retry1/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "05e649a831b9e4285647-1d136a08e9661cbaf27b",
+          "file": "toggle-all.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-26T21:58:09.133Z",
+    "duration": 21696.453999999998,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 1
+  }
+}

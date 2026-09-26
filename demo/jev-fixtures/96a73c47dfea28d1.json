@@ -1,0 +1,69 @@
+{
+  "request": {
+    "model": "jev-latest",
+    "state": {
+      "test": "renaming a todo keeps its position",
+      "file": "edit.spec.ts",
+      "error": "Test timeout of 8000ms exceeded.\n\nError: locator.fill: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('textbox', { name: 'Edit' })\n\n\n   8 |   await page.getByTestId('todo-title').first().dblclick();\n   9 |   const editor = page.getByRole('textbox', { name: 'Edit' });\n> 10 |   await editor.fill('buy goat cheese');\n     |                ^\n  11 |   await editor.press('Enter');\n  12 |   await expect(page.getByTestId('todo-title')).toHaveText(['buy goat cheese', 'feed the cat']);\n  13 | });\n    at demo/tests/edit.spec.ts:10:16",
+      "stack": [],
+      "attemptsInThisRun": [
+        "timedOut",
+        "timedOut"
+      ],
+      "history": "no prior runs recorded for this test",
+      "changedApplicationFiles": [],
+      "changedTestFilesOrData": [
+        "demo/tests/edit.spec.ts"
+      ],
+      "infrastructureMarkers": [],
+      "testDataMarkers": []
+    },
+    "questions": {
+      "cause": {
+        "type": "choice",
+        "instructions": "What is the most likely root cause of this CI test failure?",
+        "criteria": {
+          "regression": "The application under test changed behaviour: the test used to pass and now fails on a real functional difference, usually related to application code changed in this diff",
+          "flaky": "The test is nondeterministic: a race, a timing-dependent wait or order dependence, so the same code sometimes passes and sometimes fails",
+          "environment": "Infrastructure outside the code under test: network errors, a service or dependency down, DNS, runner resources, external timeouts",
+          "test-data": "The test's own data is wrong: stale or edited fixtures, seed data missing or already consumed, expectations tied to data that changed"
+        }
+      },
+      "retryWouldPass": {
+        "type": "noul",
+        "instructions": "Would this test most likely pass if it were re-run on the same commit without any change?"
+      }
+    }
+  },
+  "response": {
+    "model": "jev-latest",
+    "answers": {
+      "cause": {
+        "type": "choice",
+        "choice": "flaky",
+        "confidence": 0.69,
+        "probabilities": {
+          "test-data": 0.01,
+          "environment": 0.09,
+          "flaky": 0.77,
+          "regression": 0.13
+        }
+      },
+      "retryWouldPass": {
+        "type": "noul",
+        "noul": 0.36
+      }
+    },
+    "usage": {
+      "input_tokens": 771,
+      "output_tokens": 71
+    },
+    "provider_metadata": {
+      "gateway": {
+        "cost": "0.000032382"
+      }
+    }
+  },
+  "latencyMs": 685,
+  "recordedAt": "2026-09-26T22:00:31.791Z"
+}

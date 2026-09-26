@@ -1,0 +1,26 @@
+{
+  "filters.spec.ts › Completed filter shows only completed todos": {
+    "expected": "regression",
+    "seeded": "The candidate filters.js also treats any todo with a title longer than 12 characters as completed."
+  },
+  "toggle-all.spec.ts › marks everything complete through its accessible label": {
+    "expected": "regression",
+    "seeded": "The candidate index.html points the 'Mark all as complete' label at a non-existent input id, so it no longer labels the checkbox. The test only has 3 prior runs."
+  },
+  "counter.spec.ts › counter reflects a completed item right away": {
+    "expected": "flaky",
+    "seeded": "The app updates the counter after a random 0-300 ms delay and the test reads it once after a fixed 120 ms wait."
+  },
+  "sync.spec.ts › backup service answers its health check": {
+    "expected": "environment",
+    "seeded": "SYNC_API_URL points at a port where nothing listens (connection refused)."
+  },
+  "seed-data.spec.ts › seeded shopping list renders in order": {
+    "expected": "test-data",
+    "seeded": "The shopping-list fixture was edited: 'Milk' became 'Oat milk' and 'Bread' was removed. The app is unchanged."
+  },
+  "edit.spec.ts › renaming a todo keeps its position": {
+    "expected": "unknown",
+    "seeded": "A brand-new test for inline editing, a feature this demo build does not implement (the public TodoMVC does). No history. Whether the feature is missing or the test is wrong is a product question, so the honest answer is 'a person decides'."
+  }
+}

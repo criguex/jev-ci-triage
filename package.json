@@ -1,0 +1,37 @@
+{
+  "name": "jev-ci-triage",
+  "version": "0.1.0",
+  "description": "Classify every failing CI test as regression, flaky, environment, test-data or unknown. Deterministic signals first, Jev (TypeSafe) only for the ambiguous ones. Never masks, never reruns.",
+  "author": "Cristian Guerra (@criguex)",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "jev-ci-triage": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "triage": "tsx src/cli.ts",
+    "demo:triage": "tsx src/cli.ts --results demo/runs/current.json --history demo/runs/history --changed-files demo/scenario/changed-files.txt --config demo/jev-triage.config.json --out report --jev replay",
+    "demo:eval": "tsx scripts/eval.ts report/triage.json demo/scenario/ground-truth.json",
+    "demo:suite": "playwright test --config demo/playwright.config.ts",
+    "demo:record": "bash demo/scripts/record-runs.sh"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^4.5.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.2.0"
+  }
+}

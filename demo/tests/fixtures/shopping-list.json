@@ -1,0 +1,5 @@
+[
+  { "id": "1", "title": "Milk", "completed": false },
+  { "id": "2", "title": "Eggs", "completed": false },
+  { "id": "3", "title": "Bread", "completed": false }
+]

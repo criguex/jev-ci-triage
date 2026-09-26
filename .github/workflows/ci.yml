@@ -1,0 +1,101 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tool:
+    name: Unit tests + recorded demo triage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run typecheck
+      - run: npm test
+      - name: Triage the recorded demo run (offline, replaying recorded Jev answers)
+        uses: ./
+        with:
+          results: demo/runs/current.json
+          history: demo/runs/history
+          changed-files: demo/scenario/changed-files.txt
+          config: demo/jev-triage.config.json
+          out: report
+          jev: replay
+      - name: Compare against the seeded ground truth
+        run: npm run -s demo:eval | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: triage-report
+          path: report/
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: report/
+
+  demo-suite:
+    name: Demo suite on the candidate build (seeded failures, rules only)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npx playwright install --with-deps chromium
+      - name: Run the suite against the candidate build
+        id: suite
+        env:
+          DEMO_SCENARIO: candidate
+          SYNC_API_URL: http://127.0.0.1:9
+          DEMO_JSON_OUT: ${{ github.workspace }}/demo/.results/current.json
+        run: |
+          set +e
+          npm run -s demo:suite
+          echo "exit=$?" >> "$GITHUB_OUTPUT"
+      - name: Triage fresh results with rules only (Jev off shows the fail-open path)
+        uses: ./
+        with:
+          results: demo/.results/current.json
+          history: demo/runs/history
+          changed-files: demo/scenario/changed-files.txt
+          config: demo/jev-triage.config.json
+          out: suite-report
+          jev: 'off'
+      - name: The suite is expected to be red; triage must have seen it
+        env:
+          SUITE_EXIT: ${{ steps.suite.outputs.exit }}
+        run: |
+          echo "playwright exit code: $SUITE_EXIT (seeded failures, expected non-zero)"
+          test "$SUITE_EXIT" != "0"
+          node -e 'const r=require("./suite-report/triage.json"); if (r.totals.failing < 4) { console.error("expected the seeded failures"); process.exit(1) }'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: suite-triage-report
+          path: suite-report/
+
+  pages:
+    name: Publish report to GitHub Pages
+    if: github.ref == 'refs/heads/main'
+    needs: tool
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

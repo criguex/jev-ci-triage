@@ -1,0 +1,84 @@
+name: CI failure triage with Jev
+description: Classify each failing test as regression, flaky, environment, test-data or unknown. Rules first, Jev only for the ambiguous ones. Never reruns or hides a failure.
+author: Cristian Guerra
+branding:
+  icon: filter
+  color: orange
+inputs:
+  results:
+    description: Playwright JSON or JUnit XML of the current run
+    required: true
+  history:
+    description: Directory with earlier runs (same formats), sorted by file name
+    required: false
+    default: ''
+  changed-files:
+    description: File listing changed paths, one per line. Empty on a pull request means "compute from the base branch"
+    required: false
+    default: ''
+  config:
+    description: JSON config (appPaths, testPaths, ownership, minHistory, confidenceThreshold)
+    required: false
+    default: ''
+  out:
+    description: Output directory for triage.json, triage.md and index.html
+    required: false
+    default: triage-report
+  jev:
+    description: auto | live | record | replay | off
+    required: false
+    default: auto
+  fail-on:
+    description: Comma-separated classes that fail the step, e.g. regression,unknown
+    required: false
+    default: ''
+  api-key:
+    description: Vercel AI Gateway key (AI_GATEWAY_API_KEY). Without it Jev is skipped and ambiguous failures stay unknown
+    required: false
+    default: ''
+outputs:
+  report:
+    description: Path to the JSON report
+    value: ${{ inputs.out }}/triage.json
+runs:
+  using: composite
+  steps:
+    - name: Build triage tool
+      shell: bash
+      run: cd "$GITHUB_ACTION_PATH" && npm ci --no-audit --no-fund --ignore-scripts --loglevel=error && npm run -s build
+    - name: Resolve changed files
+      id: diff
+      shell: bash
+      env:
+        CHANGED: ${{ inputs.changed-files }}
+        BASE: ${{ github.base_ref }}
+      run: |
+        if [ -n "$CHANGED" ]; then
+          echo "path=$CHANGED" >> "$GITHUB_OUTPUT"
+        elif [ -n "$BASE" ]; then
+          git fetch --no-tags --depth=200 origin "$BASE" >/dev/null 2>&1 || true
+          git diff --name-only "origin/$BASE...HEAD" > "$RUNNER_TEMP/changed-files.txt" || true
+          echo "path=$RUNNER_TEMP/changed-files.txt" >> "$GITHUB_OUTPUT"
+        fi
+    - name: Triage
+      shell: bash
+      env:
+        AI_GATEWAY_API_KEY: ${{ inputs.api-key }}
+        RESULTS: ${{ inputs.results }}
+        HISTORY: ${{ inputs.history }}
+        CHANGED: ${{ steps.diff.outputs.path }}
+        CONFIG: ${{ inputs.config }}
+        OUT: ${{ inputs.out }}
+        JEV: ${{ inputs.jev }}
+        FAIL_ON: ${{ inputs.fail-on }}
+      run: |
+        args=(--results "$RESULTS" --out "$OUT" --jev "$JEV")
+        [ -n "$HISTORY" ] && args+=(--history "$HISTORY")
+        [ -n "$CHANGED" ] && args+=(--changed-files "$CHANGED")
+        [ -n "$CONFIG" ] && args+=(--config "$CONFIG")
+        [ -n "$FAIL_ON" ] && args+=(--fail-on "$FAIL_ON")
+        set +e
+        node "$GITHUB_ACTION_PATH/dist/cli.js" "${args[@]}"
+        code=$?
+        [ -f "$OUT/triage.md" ] && cat "$OUT/triage.md" >> "$GITHUB_STEP_SUMMARY"
+        exit $code

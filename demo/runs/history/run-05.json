@@ -1,0 +1,606 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node/26.5.0_1/bin/node",
+      "node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "demo/playwright.config.ts"
+    ],
+    "configFile": "demo/playwright.config.ts",
+    "rootDir": "demo/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "",
+        "name": "",
+        "testDir": "demo/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 8000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "demo/runs/history/run-05.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "demo/.results/run-05.xml"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": {
+      "command": "node server.mjs",
+      "url": "http://localhost:4173/api/health",
+      "reuseExistingServer": false,
+      "env": {
+        "DEMO_SCENARIO": "baseline",
+        "DEMO_PORT": "4173"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "counter.spec.ts",
+      "file": "counter.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "counter reflects a completed item right away",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 572,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7m2\u001b[27m items left\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m3\u001b[27m items left\"\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7m2\u001b[27m items left\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m3\u001b[27m items left\"\u001b[39m\n    at demo/tests/counter.spec.ts:9:62",
+                    "location": {
+                      "file": "demo/tests/counter.spec.ts",
+                      "column": 62,
+                      "line": 9
+                    },
+                    "snippet": "   7 |   await page.getByRole('checkbox', { name: 'Toggle Todo' }).first().check();\n   8 |   await page.waitForTimeout(120);\n>  9 |   expect(await page.getByTestId('todo-count').textContent()).toBe('2 items left');\n     |                                                              ^\n  10 | });\n  11 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "demo/tests/counter.spec.ts",
+                        "column": 62,
+                        "line": 9
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7m2\u001b[27m items left\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m3\u001b[27m items left\"\u001b[39m\n\n   7 |   await page.getByRole('checkbox', { name: 'Toggle Todo' }).first().check();\n   8 |   await page.waitForTimeout(120);\n>  9 |   expect(await page.getByTestId('todo-count').textContent()).toBe('2 items left');\n     |                                                              ^\n  10 | });\n  11 |\n    at demo/tests/counter.spec.ts:9:62"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:57:57.154Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "test-results/counter-counter-reflects-a-completed-item-right-away/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "demo/tests/counter.spec.ts",
+                    "column": 62,
+                    "line": 9
+                  }
+                },
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 313,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-09-26T21:57:58.298Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "flaky"
+            }
+          ],
+          "id": "50879ed375f8988ef978-320a056b6dfd48fefa16",
+          "file": "counter.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "edit.spec.ts",
+      "file": "edit.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "renaming a todo keeps its position",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "test added in the candidate change",
+                  "location": {
+                    "file": "demo/tests/edit.spec.ts",
+                    "line": 5,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "skipped",
+                  "duration": 203,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:57:57.154Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "test added in the candidate change",
+                      "location": {
+                        "file": "demo/tests/edit.spec.ts",
+                        "line": 5,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "9ed70afab1bbfad1daab-614fee7a0b5f98b47ccc",
+          "file": "edit.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "filters.spec.ts",
+      "file": "filters.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Active filter shows only active todos",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 456,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:57:57.146Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6174a577dcf149f42c01-48f4fdac522e9f2e5896",
+          "file": "filters.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "Completed filter shows only completed todos",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 3,
+                  "status": "passed",
+                  "duration": 513,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:57:57.156Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6174a577dcf149f42c01-0bd98d04ad9e302a80e9",
+          "file": "filters.spec.ts",
+          "line": 15,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "seed-data.spec.ts",
+      "file": "seed-data.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "seeded shopping list renders in order",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 172,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:57:57.624Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2345eacddb101d6b3858-ff45daa3fa0dc3a37a3f",
+          "file": "seed-data.spec.ts",
+          "line": 11,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "sync.spec.ts",
+      "file": "sync.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "backup service answers its health check",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 45,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:57:57.813Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0cc518b4e81cfdbffc61-856da5c98128eb76ea24",
+          "file": "sync.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "todos.spec.ts",
+      "file": "todos.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "adds todos in the order they were typed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 116,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:57:57.851Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8a9e645a89191b4a5606-0e7f149eba5cd99b0500",
+          "file": "todos.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "completing a todo strikes it through",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 199,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:57:57.873Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8a9e645a89191b4a5606-a7155acca66f9d305ee5",
+          "file": "todos.spec.ts",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "clear completed removes only completed todos",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 3,
+                  "status": "passed",
+                  "duration": 252,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:57:57.914Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8a9e645a89191b4a5606-4659f9ffed181d8abd05",
+          "file": "todos.spec.ts",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "counter shows items left",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 122,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:57:57.976Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8a9e645a89191b4a5606-5b5286ecc6b738cefee8",
+          "file": "todos.spec.ts",
+          "line": 26,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "toggle-all.spec.ts",
+      "file": "toggle-all.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "marks everything complete through its accessible label",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 8000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "test introduced in run 6",
+                  "location": {
+                    "file": "demo/tests/toggle-all.spec.ts",
+                    "line": 5,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "skipped",
+                  "duration": 55,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-26T21:57:58.083Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "test introduced in run 6",
+                      "location": {
+                        "file": "demo/tests/toggle-all.spec.ts",
+                        "line": 5,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "05e649a831b9e4285647-1d136a08e9661cbaf27b",
+          "file": "toggle-all.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-26T21:57:56.682Z",
+    "duration": 2087.888,
+    "expected": 8,
+    "skipped": 2,
+    "unexpected": 0,
+    "flaky": 1
+  }
+}

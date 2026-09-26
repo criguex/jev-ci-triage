@@ -1,0 +1,17 @@
+body{font:16px/1.4 system-ui,sans-serif;background:#f5f5f5;margin:0;display:flex;justify-content:center}
+.todoapp{background:#fff;width:100%;max-width:520px;margin:40px 16px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+h1{text-align:center;color:#b83f45;font-weight:200;font-size:56px;margin:12px 0}
+.new-todo{width:100%;padding:14px 16px;font-size:20px;border:0;border-bottom:1px solid #eee;box-sizing:border-box}
+.todo-list{list-style:none;margin:0;padding:0}
+.todo-list li{border-bottom:1px solid #eee;padding:10px 16px}
+.todo-list li.completed label{text-decoration:line-through;color:#999}
+.view{display:flex;gap:12px;align-items:center}
+.view label{flex:1}
+.destroy{border:0;background:none;cursor:pointer}
+.destroy::after{content:"×";color:#b83f45;font-size:20px}
+.footer{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font-size:14px;color:#777;gap:8px;flex-wrap:wrap}
+.filters{list-style:none;display:flex;gap:8px;margin:0;padding:0}
+.filters a{color:inherit;text-decoration:none;padding:2px 6px;border:1px solid transparent;border-radius:3px}
+.filters a.selected{border-color:#e8c6c6}
+.clear-completed{border:0;background:none;color:inherit;cursor:pointer}
+[hidden]{display:none!important}

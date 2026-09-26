@@ -1,0 +1,15 @@
+{
+  "appPaths": ["demo/app/**", "demo/server.mjs"],
+  "testPaths": ["demo/tests/**"],
+  "ownership": {
+    "filters.spec.ts": ["demo/app/filters.js", "demo/app/app.js"],
+    "todos.spec.ts": ["demo/app/app.js", "demo/app/index.html"],
+    "counter.spec.ts": ["demo/app/app.js"],
+    "seed-data.spec.ts": ["demo/app/app.js", "demo/tests/fixtures/shopping-list.json"],
+    "sync.spec.ts": ["demo/server.mjs"],
+    "toggle-all.spec.ts": ["demo/app/index.html", "demo/app/app.js"],
+    "edit.spec.ts": ["demo/app/app.js"]
+  },
+  "minHistory": 5,
+  "confidenceThreshold": 0.75
+}
