@@ -136,7 +136,7 @@ Recording note: the candidate run is repeated until the flaky test fails its fir
 ## Use it in your pipeline
 
 ```yaml
-- uses: actions/checkout@v4
+- uses: actions/checkout@v5
   with: { fetch-depth: 0 }
 - run: npx playwright test
   continue-on-error: true
